@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+		id="com.dd.upgrade" 
+		version="0.0.1">
+		
+        <name>updateAppPlugin</name>
+        <description>update app plugin</description>
+        <license></license>
+        <keywords>cordova,upgrade app</keywords>
+        <repo></repo>
+		
+		<js-module src="www/updateAppPlugin.js" name="updateAppPlugin">
+            <clobbers target="updateAppPlugin" />
+        </js-module>
+		
+		<!-- android -->
+		<platform name="android">
+			<config-file target="res/xml/config.xml" parent="/*">
+				<feature name="updateAppPlugin">
+					<param name="android-package" value="com.dd.upgrade.UpdateApp" />
+				</feature>
+			</config-file>
+			<config-file target="AndroidManifest.xml" parent="/*">
+				    <uses-permission android:name="android.permission.INTERNET" />
+					<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+			</config-file>
+			
+			<source-file src="src/android/UpdateApp.java" target-dir="src/com/dd/upgrade"/>
+			<source-file src="src/android/res/layout/softupdate_progress.xml" target-dir="res/layout"/>
+		</platform>
+    </plugin>
